@@ -1,0 +1,113 @@
+package PageObject_File;
+
+import static org.testng.Assert.assertEquals;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Map;
+
+import org.apache.commons.io.FileUtils;
+import org.json.JSONObject;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import Utilitiy.CommonMethod;
+import Utilitiy.ReadConfig;
+import Utilitiy.Rest_Assured;
+import io.restassured.response.Response;
+
+public class apiValidation {
+	public CommonMethod cmnobj;
+	private BaseClass basobj;
+	public String req_body;
+	public Response api_response;
+	
+	private Map<String, Object> map1;
+	private Map<String, Object> map2;
+
+	public apiValidation(BaseClass obj) throws Throwable {
+		this.basobj = basobj;
+		cmnobj = new CommonMethod(basobj);
+	}
+
+public  boolean validateapi()throws Throwable {
+	//return false;
+	boolean res=false;
+	try {
+		String req_body=Files.readString(Paths.get(System.getProperty("user.dir") + ReadConfig.get_from_config("post_api_request_body_path")));
+		Response api_response=Rest_Assured.postCall(req_body,ReadConfig.get_from_config("post_api_endpoint"));
+		System.out.println("Actual result" +req_body);
+		Integer Status=api_response.statusCode();
+		System.out.println(Status);
+		String JSON=api_response.asPrettyString();
+		System.out.println(JSON);
+	if(api_response.statusCode()==200) {
+		cmnobj.step_log("Actual result is " +JSON +Status);
+		cmnobj.step_log(req_body);
+		res=true;
+	}
+	}
+		
+	//}
+	/*ObjectMapper objectMapper = new ObjectMapper();
+    map1 = objectMapper.readValue(req_body.toString(), Map.class);
+    map2 = objectMapper.readValue(api_response.getBody().asString(), Map.class);
+    basobj.scenario.log("JSON Object 1: " + map1);
+    basobj.scenario.log("JSON Object 2: " + map2);*/
+	
+	
+	
+	
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+	return res;
+	
+	
+}
+
+	/*public void i_compare_the_json_objects_field_by_field() {
+		// Iterate through the JSON fields in map1 and map2
+		for (String key : req_body.keySet()) {
+			Object value1 = map1.get(key);
+			Object value2 = map2.get(key);
+
+			try {
+				assertEquals(value1, value2); // Assert that values are equal
+				basobj.scenario.log("PASS: Field '" + key + "' matches. Value: " + value1);
+			} catch (AssertionError e) {
+				// Log mismatch to the Cucumber report
+				basobj.scenario.log("FAIL: Field '" + key + "' mismatch. Value 1: " + value1 + ", Value 2: " + value2);
+			}
+		}
+	}*/
+
+	public boolean the_comparison_result_should_be_logged_in_the_report() throws Throwable {
+		boolean res = false;
+		try {
+			String req_body=Files.readString(Paths.get(System.getProperty("user.dir") + ReadConfig.get_from_config("post_api_request_body_path")));
+			Response api_response=Rest_Assured.postCall(req_body,ReadConfig.get_from_config("post_api_endpoint"));
+			System.out.println("JSON comparison completed."+req_body.toString() +api_response.asString());
+			JSONObject js1= new JSONObject(req_body);
+			JSONObject js2= new JSONObject(api_response.asString());
+			
+			
+			// Log the final result (already logged in @When step)
+			if(js1.similar(js2)) {
+				
+		 basobj.scenario.log("JSON comparison completed."+"\n"+js1 +"\n"+js2);
+			res = true;
+			}
+			else {
+				basobj.scenario.log("JSON comparison fail");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return res;
+	}
+
+}

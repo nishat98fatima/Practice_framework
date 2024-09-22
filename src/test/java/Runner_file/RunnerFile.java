@@ -16,13 +16,12 @@ import io.cucumber.testng.FeatureWrapper;
 import io.cucumber.testng.PickleWrapper;
 import io.cucumber.testng.TestNGCucumberRunner;
 
-@CucumberOptions(features = { "src/test/java/FeatureFile" }, glue = "StepDefination", plugin = {
-		"Utilitiy.Step_Details" }, tags = "@Test")
+@CucumberOptions(features = { "src/test/java/FeatureFile" }, glue = "StepDefination", plugin = {"json:results/cucumberjson/cucumber.json" }, tags = "@restAssured")
 public class RunnerFile extends BaseClass {
 	// private BaseClass obj1;
 	private TestNGCucumberRunner testng_cucumber_runner;
 
-	@BeforeSuite
+	/*@BeforeSuite
 	public void extentReport() throws Throwable {
 		BaseClass.spark = new ExtentSparkReporter(
 				System.getProperty("user.dir") + ReadConfig.get_from_config("extent_report_path"));
@@ -38,7 +37,7 @@ public class RunnerFile extends BaseClass {
 	@BeforeClass(alwaysRun = true)
 	public void set_up_class() throws Throwable {
 		testng_cucumber_runner = new TestNGCucumberRunner(this.getClass());
-	}
+	}*/
 
 	@Test(groups = "cucumber", description = "Runs Cucumber Feature", dataProvider = "features")
 	public void scenario(PickleWrapper pickle, FeatureWrapper cucumber_feature) {

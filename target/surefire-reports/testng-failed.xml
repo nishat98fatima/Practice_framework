@@ -5,11 +5,8 @@
     <classes>
       <class name="Runner_file.RunnerFile">
         <methods>
-          <include name="extentFlush"/>
-          <include name="scenario"/>
-          <include name="set_up_class"/>
+          <include name="scenario" invocation-numbers="0"/>
           <include name="tear_down_class"/>
-          <include name="extentReport"/>
         </methods>
       </class> <!-- Runner_file.RunnerFile -->
     </classes>

@@ -1,7 +1,7 @@
+Runner_file\RunnerFile.class
+PageObject_File\BaseClass.class
 PageObject_File\googlePage.class
 Utilitiy\ReadConfig.class
-Runner_file\RunnerFile.class
 StepDefination\GlueCode.class
-PageObject_File\BaseClass.class
 Utilitiy\CommonMethod.class
 Utilitiy\driverManager.class

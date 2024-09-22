@@ -16,6 +16,7 @@ public class BaseClass {
 	public static ExtentSparkReporter spark = null;
 	public static ExtentTest extent_test_obj=null;
 	public static Scenario scenario;
+	public String scenario_keyword;
 	public void initialize_scenario(Scenario scenario) {
 		BaseClass.scenario = scenario;
 	}

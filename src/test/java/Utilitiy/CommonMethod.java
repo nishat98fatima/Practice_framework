@@ -32,6 +32,14 @@ public class CommonMethod {
 	}
 		
 	}
+	public void step_log(String log_msg) {
+		baseobj.scenario.log(log_msg);
+	}
+	
+	public void capture_screenshot() {
+		byte[] screenshot = ((TakesScreenshot) baseobj.driver).getScreenshotAs(OutputType.BYTES);
+		baseobj.scenario.attach(screenshot, "image/png", "screenshot");
+	}
 	public void assertion_method(String step_name, boolean var) throws Throwable {
 		try {
 			
