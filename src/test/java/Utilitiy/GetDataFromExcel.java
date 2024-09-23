@@ -88,4 +88,27 @@ public class GetDataFromExcel {
 		System.out.println(var1);
 
 	}
+	public static HashMap<String, Object> read_excel_as_map(String scenario_keyword) throws Throwable{
+		HashMap<String, Object> map_data = new HashMap<>();
+		try {
+			XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File(
+					System.getProperty("user.dir") + "/Test_case.xlsx")));
+			XSSFSheet ws = wb.getSheet("Sheet1");
+			int rows = ws.getPhysicalNumberOfRows();
+			int cols = ws.getRow(0).getPhysicalNumberOfCells();
+			for(int i = 0; i < rows; i++) {
+				if(ws.getRow(i).getCell(0).toString().equals(scenario_keyword)) {
+					for(int j = 0; j < cols; j++) {
+						map_data.put(ws.getRow(0).getCell(j).toString(), ws.getRow(i).getCell(j));
+					}
+				}
+			}
+			wb.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return map_data;
+	}
+	
 }

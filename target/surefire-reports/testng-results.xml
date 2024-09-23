@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-22T23:38:35 IST" name="Suite" finished-at="2024-09-22T23:38:41 IST" duration-ms="6162">
+  <suite started-at="2024-09-23T21:41:01 IST" name="Suite" finished-at="2024-09-23T21:41:08 IST" duration-ms="6903">
     <groups>
       <group name="cucumber">
         <method signature="RunnerFile.scenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner_file.RunnerFile@3571b748]" name="scenario" class="Runner_file.RunnerFile"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2024-09-22T23:38:35 IST" name="Test" finished-at="2024-09-22T23:38:41 IST" duration-ms="6162">
+    <test started-at="2024-09-23T21:41:01 IST" name="Test" finished-at="2024-09-23T21:41:08 IST" duration-ms="6903">
       <class name="Runner_file.RunnerFile">
-        <test-method signature="scenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner_file.RunnerFile@3571b748]" started-at="2024-09-22T23:38:35 IST" name="scenario" description="Runs Cucumber Feature" data-provider="features" finished-at="2024-09-22T23:38:41 IST" duration-ms="5345" status="PASS">
+        <test-method signature="scenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:Runner_file.RunnerFile@3571b748]" started-at="2024-09-23T21:41:01 IST" name="scenario" description="Runs Cucumber Feature" data-provider="features" finished-at="2024-09-23T21:41:07 IST" duration-ms="6266" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -23,10 +23,25 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at org.testng.Assert.assertTrue(Assert.java:67)
+at StepDefination.ApiGlueCode.compareresult(ApiGlueCode.java:37)
+at ✽.Compare Expected and actual result.(file:///D:/Workspace_Sel/Selenium_Workspace/src/test/java/FeatureFile/ApiFeature.feature:27)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- scenario -->
-        <test-method is-config="true" signature="tear_down_class()[pri:0, instance:Runner_file.RunnerFile@3571b748]" started-at="2024-09-22T23:38:41 IST" name="tear_down_class" finished-at="2024-09-22T23:38:41 IST" duration-ms="352" status="PASS">
+        <test-method is-config="true" signature="tear_down_class()[pri:0, instance:Runner_file.RunnerFile@3571b748]" started-at="2024-09-23T21:41:07 IST" name="tear_down_class" finished-at="2024-09-23T21:41:08 IST" duration-ms="305" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tear_down_class -->

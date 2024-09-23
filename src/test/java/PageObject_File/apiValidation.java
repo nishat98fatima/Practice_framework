@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Utilitiy.CommonMethod;
 import Utilitiy.ReadConfig;
 import Utilitiy.Rest_Assured;
+import Utilitiy.jsonread;
 import io.restassured.response.Response;
 
 public class apiValidation {
@@ -36,7 +37,7 @@ public  boolean validateapi()throws Throwable {
 	//return false;
 	boolean res=false;
 	try {
-		String req_body=Files.readString(Paths.get(System.getProperty("user.dir") + ReadConfig.get_from_config("post_api_request_body_path")));
+		String req_body=jsonread.read_json();
 		Response api_response=Rest_Assured.postCall(req_body,ReadConfig.get_from_config("post_api_endpoint"));
 		System.out.println("Actual result" +req_body);
 		Integer Status=api_response.statusCode();
@@ -87,7 +88,7 @@ public  boolean validateapi()throws Throwable {
 	public boolean the_comparison_result_should_be_logged_in_the_report() throws Throwable {
 		boolean res = false;
 		try {
-			String req_body=Files.readString(Paths.get(System.getProperty("user.dir") + ReadConfig.get_from_config("post_api_request_body_path")));
+			String req_body=jsonread.read_json();
 			Response api_response=Rest_Assured.postCall(req_body,ReadConfig.get_from_config("post_api_endpoint"));
 			System.out.println("JSON comparison completed."+req_body.toString() +api_response.asString());
 			JSONObject js1= new JSONObject(req_body);
@@ -101,7 +102,7 @@ public  boolean validateapi()throws Throwable {
 			res = true;
 			}
 			else {
-				basobj.scenario.log("JSON comparison fail");
+				basobj.scenario.log("JSON comparison fail"+"\n"+js1 +"\n"+js2);
 			}
 
 		} catch (Exception e) {
