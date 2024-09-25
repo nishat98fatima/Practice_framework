@@ -1,13 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 7.614 s <<< FAILURE! -- in TestSuite
-Runner_file.RunnerFile.scenario["Title of your scenario", "Title of your feature"](1) -- Time elapsed: 6.270 s <<< FAILURE!
-java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at org.testng.Assert.assertTrue(Assert.java:67)
-	at StepDefination.ApiGlueCode.compareresult(ApiGlueCode.java:37)
-	at ✽.Compare Expected and actual result.(file:///D:/Workspace_Sel/Selenium_Workspace/src/test/java/FeatureFile/ApiFeature.feature:27)
-
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.17 s -- in TestSuite

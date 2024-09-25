@@ -33,3 +33,5 @@ Feature: Title of your feature
     Examples: 
      |keyword|
      |TC_01|
+     |TC_02|
+     |TC_03|

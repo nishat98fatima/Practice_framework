@@ -5,7 +5,7 @@
     <classes>
       <class name="Runner_file.RunnerFile">
         <methods>
-          <include name="scenario" invocation-numbers="0"/>
+          <include name="scenario" invocation-numbers="0 1 2"/>
           <include name="tear_down_class"/>
         </methods>
       </class> <!-- Runner_file.RunnerFile -->

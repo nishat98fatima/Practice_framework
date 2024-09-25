@@ -1,5 +1,7 @@
 package PageObject_File;
 
+import java.util.HashMap;
+
 import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -17,6 +19,7 @@ public class BaseClass {
 	public static ExtentTest extent_test_obj=null;
 	public static Scenario scenario;
 	public String scenario_keyword;
+	public HashMap<String,String>map=new HashMap<String,String>();
 	public void initialize_scenario(Scenario scenario) {
 		BaseClass.scenario = scenario;
 	}
